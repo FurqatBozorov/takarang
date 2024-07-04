@@ -1,0 +1,17 @@
+name: Linting
+
+on:[push,pull_request]
+
+jobs:
+  job:
+    name: Chech linting
+    runs-on: windows-latest
+    steps:
+  job:
+    name: Check code style
+    runs-on: windows-latest
+    steps:
+  job:
+    name: Run test
+    runs-on: windows-latest
+    steps:

@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@takarang/components": ["libs/components/src/index.ts"],
+      "@takarang/hooks": ["libs/hooks/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
