@@ -6,8 +6,9 @@ on:
       -master
       -main
   pull_request
+  
 jobs:
-  job:
+  my-first-job:
     name: Chech linting
     runs-on: windows-latest
     steps:
