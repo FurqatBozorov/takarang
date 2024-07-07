@@ -1,29 +1,8 @@
-name: Linting
-
-on:
-  push:
-    branches:
-      -master
-      -main
-  pull_request
-  
+name: hello-world
+on: push
 jobs:
-  my-first-job:
-    name: Chech linting
-    runs-on: windows-latest
+  my-job:
+    runs-on: ubuntu-latest
     steps:
-      -uses: actions/checkout@v2
-       with: 
-          fetch-depth: 0
-      -uses: actions/setup-node@v2
-       with:
-          node-version: '18.16.1'
-      -name:  install dependencies
-        run: npm ci --audit=false --fund=false
-        env:
-         CI: false
-      -name: Check code style
-        run: npm run prettier
-      -name: Check linting
-        run: npm run lints
-  
+      - name: my-step
+        run: echo "Hello World!"
