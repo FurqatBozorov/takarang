@@ -1,0 +1,23 @@
+name: Publish library
+on:
+  workflow_dispatch:
+    inputs:
+      library:
+        description: 'Labrary'
+        required: true
+        type: choice
+        options:
+          - components
+          - hooks
+      publish:
+        description: 'Publish package to registry'
+        required: false
+        type: boolean
+
+jobs:
+  publish:
+    runs-on: windows-latest
+    steps:
+      - name: Publish the library
+        if: ${{inputs.publish}}
+        run: echo inputs.library

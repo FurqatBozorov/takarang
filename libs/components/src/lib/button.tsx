@@ -3,7 +3,7 @@ type props = {
 };
 
 export function Button({ title }: props) {
-  return <button>{title}</button>;
+  return <button style={{ color: 'red' }}>{title}</button>;
 }
 
 export default Button;
