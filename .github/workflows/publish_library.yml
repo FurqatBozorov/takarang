@@ -1,4 +1,4 @@
-name: Linting
+name: Publish library
 on:
   push:
     branches:
