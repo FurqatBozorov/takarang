@@ -13,10 +13,3 @@ on:
       description: 'Publish package to registry'
       required: false
       type: boolean
-
-jobs:
-  publish:
-    runs-on: windows-latest
-    steps:
-      - name: Publish the library
-         run: echo 'Hello world!' 
