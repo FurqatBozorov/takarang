@@ -3,30 +3,21 @@ on:
   workflow_dispatch:
     inputs:
       library:
-        description: 'Library'
+        description: 'Labrary'
         required: true
         type: choice
         options:
           - components
           - hooks
+      publish:
+        description: 'Publish package to registry'
+        required: false
+        type: boolean
 
 jobs:
-  my-First-job:
-    runs-on: ubuntu-latest
+  publish:
+    runs-on: windows-latest
     steps:
-      - name: checkout the source code
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: install node
-        uses: actions/setup-node@v2
-        with:
-          node-version: '18.18.0'
-      - name: Install dependencies
-        run: npm ci --audit=false --fund=false
-        env:
-          CI: false
-      - name: Check linting
-        run: npm run lint
-      - name: Check code style
-        run: npm run prettier
+      - name: Publish the library
+        if: ${{inputs.publish}}
+        run: echo inputs.library
