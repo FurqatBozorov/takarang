@@ -9,3 +9,12 @@ on:
         options:
           - components
           - hooks
+
+jobs:
+  publish_library:
+    runs-on: ubuntu-latest
+    steps:
+      - name: say hello
+        run: echo 'Hello world!'
+      - name: say good bye
+        run: echo 'Good bye!'
