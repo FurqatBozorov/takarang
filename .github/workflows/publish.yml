@@ -3,13 +3,9 @@ on:
   workflow_dispatch:
     inputs:
       library:
-        description: 'Labrary'
+        description: 'Library'
         required: true
         type: choice
         options:
           - components
           - hooks
-    publish:
-      description: 'Publish package to registry'
-      required: false
-      type: boolean
