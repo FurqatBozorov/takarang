@@ -1,5 +1,4 @@
 name: Publish library
-
 on:
   workflow_dispatch:
     inputs:
@@ -20,4 +19,4 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Publish the library
-         run: echo `Published ${{inputs.library}}`
+         run: echo 'published ${{ inputs.library}}' 
