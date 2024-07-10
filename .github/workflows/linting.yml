@@ -25,3 +25,5 @@ jobs:
         run: npm ci --audit=false --fund=false
         env:
           CI: false
+      - name: Check linting
+        run: npm run lint
