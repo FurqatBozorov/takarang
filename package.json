@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "engines": {
-    "node": "18.18.0",
-    "npm": "9.5.1"
+    "node": ">=18.18.0",
+    "npm": ">=9.5.1"
   },
   "scripts": {
     "start": "nx serve takarang",
