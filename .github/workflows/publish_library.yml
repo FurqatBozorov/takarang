@@ -1,9 +1,15 @@
 name: Publish library
 on:
-  pull_request:
-    branches:
-      - main
-      - master
+  workflow_dispatch:
+    inputs:
+      library:
+        description: 'Library'
+        required: true
+        type: choice
+        options:
+          - components
+          - hooks
+
 jobs:
   my-First-job:
     runs-on: ubuntu-latest
