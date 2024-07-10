@@ -19,4 +19,4 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Publish the library
-         run: echo 'published ${{ inputs.library}}' 
+         run: echo 'Hello world!' 
