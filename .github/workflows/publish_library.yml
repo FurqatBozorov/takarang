@@ -1,20 +1,31 @@
-name: Publish library
+name: Linting
 on:
-  workflow_dispatch:
-    inputs:
-      library:
-        description: 'Library'
-        required: true
-        type: choice
-        options:
-          - components
-          - hooks
-
+  push:
+    branches:
+      - main
+      - master
+      - '*'
+  pull_request:
+    branches:
+      - main
+      - master
 jobs:
-  publish_library:
+  my-First-job:
     runs-on: ubuntu-latest
     steps:
-      - name: say hello
-        run: echo 'Hello world!'
-      - name: say good bye
-        run: echo 'Good bye!'
+      - name: checkout the source code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: install node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.18.0'
+      - name: Install dependencies
+        run: npm ci --audit=false --fund=false
+        env:
+          CI: false
+      - name: Check linting
+        run: npm run lint
+      - name: Check code style
+        run: npm run prettier
