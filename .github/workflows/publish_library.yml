@@ -33,3 +33,6 @@ jobs:
       - name: Publish the library
         if: ${{inputs.publish}}
         run: echo ${{inputs.library}}
+      - name: Publish the increment type
+        if: ${{inputs.increment}}
+        run: echo ${{inputs.incrementType}}
