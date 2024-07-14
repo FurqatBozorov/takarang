@@ -42,7 +42,7 @@ jobs:
         run: npm ci --audit=false --fund=false
         env:
           CI: false
-      - namw: Buils library
+      - name: Buils library
         if: ${{inputs.publish}}
         run: npx nx run ${{inputs.library}}:build --skipNxCache --emptyOutDir
       - name: Publish library
