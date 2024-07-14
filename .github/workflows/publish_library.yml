@@ -13,6 +13,18 @@ on:
         description: 'Publish package to registry'
         required: false
         type: boolean
+      increment:
+        description: 'Increment the version of package'
+        required: false
+        type: boolean
+      incrementType:
+        description: 'Incremention Type'
+        required: true
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
 
 jobs:
   publish:
