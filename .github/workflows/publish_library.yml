@@ -47,6 +47,7 @@ jobs:
         id: bump_version
         uses: christian-draeger/increment-semantic-version@1.1.0
         with:
+          current-version: '0.0.4'
           version-fragment: ${{inputs.incrementType}}
       - name: Build library
         if: ${{inputs.publish}}
