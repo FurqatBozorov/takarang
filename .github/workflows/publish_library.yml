@@ -23,8 +23,8 @@ on:
         type: choice
         options:
           - major
-          - feature
-          - bug
+          - minor
+          - patch
 
 jobs:
   publish:
@@ -43,12 +43,14 @@ jobs:
         run: npm ci --audit=false --fund=false
         env:
           CI: false
-      - name: Bump release version
-        id: bump_version
-        uses: christian-draeger/increment-semantic-version@1.1.0
+      - name: Get next version
+        uses: reecetech/version-increment@2024.4.3
+        id: version
         with:
-          current-version: '0.0.4'
-          version-fragment: ${{inputs.incrementType}}
+          scheme: semver
+          increment: patch
+      - name: Build image
+        uses: docker/build-push-action@v2        
       - name: Build library
         if: ${{inputs.publish}}
         run: npx nx run ${{inputs.library}}:build --skipNxCache --emptyOutDir
