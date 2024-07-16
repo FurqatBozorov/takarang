@@ -46,6 +46,7 @@ jobs:
       - name: Next Version
         uses: Piszmog/next-version@v1
         with:
+          token: ${{ secrets.PAT }}
           files: package.json
       - name: Build library
         if: ${{inputs.publish}}
