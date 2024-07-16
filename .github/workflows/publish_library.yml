@@ -23,8 +23,8 @@ on:
         type: choice
         options:
           - major
-          - minor
-          - patch
+          - feature
+          - bug
 
 jobs:
   publish:
@@ -43,7 +43,12 @@ jobs:
         run: npm ci --audit=false --fund=false
         env:
           CI: false
-      - name: Buils library
+      - name: Bump release version
+        id: bump_version
+        uses: christian-draeger/increment-semantic-version@1.1.0
+        with:
+          version-fragment: ${{inputs.incrementType}}
+      - name: Build library
         if: ${{inputs.publish}}
         run: npx nx run ${{inputs.library}}:build --skipNxCache --emptyOutDir
       - name: Publish library
