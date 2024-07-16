@@ -38,12 +38,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18.18.0'
-      - name: Setup npm scope and npm proxy
-        run: |
-          npm config set @takarang/${{inputs.library}}:registry https://www.npmjs.com/settings/takarang/packages
-          npm set "https://www.npmjs.com/settings/takarang/packages:_password=Niluf@r_B0z0r0v@"
-          npm set "https://www.npmjs.com/settings/takarang/packages:username=furkatbozorov"
-          npm set "https://www.npmjs.com/settings/takarang/packages:email=furqatb@gmail.com"
+          registry-url: 'https://registry.npmjs.org'
       - name: Install dependency
         run: npm ci --audit=false --fund=false
         env:
@@ -53,3 +48,5 @@ jobs:
         run: npx nx run ${{inputs.library}}:build --skipNxCache --emptyOutDir
       - name: Publish library
         run: cd dist/libs/${{inputs.library}} && npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secret.NPM_TOKEN}}
