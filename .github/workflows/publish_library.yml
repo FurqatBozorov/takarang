@@ -47,10 +47,14 @@ jobs:
       - name: Next Version
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
-        run: |
-              cd libs/${{inputs.library}} && npm version ${{inputs.incrementType}}  
-              git commit -am 'change ${{inputs.incrementType}} version'
-              git push
+        run: cd libs/${{inputs.library}} && npm version ${{inputs.incrementType}}
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: FurkatBozorov
+          author_email: furqatb@gmail.com
+          message: 'Change the package version'
+          add: 'package.json'             
       - name: Build library
         if: ${{inputs.publish}}
         run: npx nx run ${{inputs.library}}:build --skipNxCache --emptyOutDir
