@@ -45,6 +45,8 @@ jobs:
         env:
           CI: false
       - name: Next Version
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
         run: |
               cd libs/${{inputs.library}} && npm version ${{inputs.incrementType}}  
               git commit -am 'change ${{inputs.incrementType}} version'
