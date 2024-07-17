@@ -44,7 +44,10 @@ jobs:
         env:
           CI: false
       - name: Next Version
-        run: cd libs/${{inputs.library}} && npm version ${{inputs.incrementType}}              
+        run: |
+              cd libs/${{inputs.library}} && npm version ${{inputs.incrementType}}  
+              git commit -am 'change ${{inputs.incrementType}} version'
+              git push
       - name: Build library
         if: ${{inputs.publish}}
         run: npx nx run ${{inputs.library}}:build --skipNxCache --emptyOutDir
