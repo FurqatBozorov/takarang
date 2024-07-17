@@ -33,8 +33,8 @@ jobs:
       - name: Checkout the source code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
           token: ${{ secrets.PAT }}
+          fetch-depth: 0
       - name: Setup node.js
         uses: actions/setup-node@v4
         with:
