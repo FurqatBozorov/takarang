@@ -44,10 +44,7 @@ jobs:
         env:
           CI: false
       - name: Next Version
-        uses: Piszmog/next-version@v1
-        with:
-          token: ${{ secrets.PAT }}
-          files: package.json
+        run: cd libs/${{inputs.library}} and npm version ${{inputs.incrementType}}              
       - name: Build library
         if: ${{inputs.publish}}
         run: npx nx run ${{inputs.library}}:build --skipNxCache --emptyOutDir
